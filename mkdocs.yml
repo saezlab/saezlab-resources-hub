@@ -1,0 +1,135 @@
+site_name: Saez-Rodriguez Group - Resource Hub
+site_url: https://saezlab.github.io/saezlab-resource-hub
+site_author: Scientific Software Center - Heidelberg University
+site_description: >-
+  Kickstart your Software Engineering journey with this comprehensive resource hub,
+  curated by the Saez-Rodriguez Group to support learning, best practices, and hands-on development.
+
+theme:
+  name: material
+  custom_dir: material/overrides
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.footer
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off
+        name: Switch to system preference
+
+
+  font:
+    text: Lato
+    code: Roboto Mono
+  favicon: assets/img/favicon.ico
+  logo: assets/img/logo.png
+
+#=======    Website Navigation settings   =====
+nav:
+  - Home: index.md
+
+  - Templates:
+    - resources/saezlab-templates/python-templates.md
+
+  - About:
+      - saezlab-resource-hub/project.md
+      - Design philosophy: saezlab-resource-hub/design-philosophy.md
+      - Use Cases: saezlab-resource-hub/use-cases.md
+      - About: about.md
+  - Community:
+    - Join Us: community/index.md
+    - Where to Start: community/contribute.md
+    - Contribute to the Documentation: community/contribute-docs.md
+    - Contribute to the Code Base: community/contribute-codebase.md
+
+
+
+#=======    Extension settings (sorted alphabetically)  =====
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - md_in_html
+  #----- Python Markdown Extensions
+  - pymdownx.details
+
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight: # Note: list of Pygments: https://pygments.org/docs/lexers/
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+#=======    Plugins    =====
+plugins:
+  - search
+  - include-markdown
+  - minify:
+      minify_html: true
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            annotations_path: brief
+            docstring_style: google
+            heading_level: 3
+            modernize_annotations: true
+            show_category_heading: true
+            show_object_full_path: false
+            show_root_toc_entry: true
+            show_signature: true
+            show_signature_annotations: false
+            signature_crossrefs: true
+
+# Hooks
+hooks:
+  - material/overrides/hooks/shortcodes.py
+  - material/overrides/hooks/translations.py
+
+extra:
+  icons:
+    - material
+    - path: assets/icons
+
+copyright: © Copyright 2022-2025, Saez-Rodriguez Group (development team)
